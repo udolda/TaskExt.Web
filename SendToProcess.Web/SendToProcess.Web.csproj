@@ -6,12 +6,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{9CD407C8-F3F7-495D-A84D-25857FE8D692}</ProjectGuid>
+    <ProjectGuid>{3AC435D0-AF1D-4207-B5B4-9CDB29980E5F}</ProjectGuid>
     <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ExtrasTaskExt.Web</RootNamespace>
-    <AssemblyName>ExtrasTaskExt.Web</AssemblyName>
+    <RootNamespace>SendToProcess.Web</RootNamespace>
+    <AssemblyName>SendToProcess.Web</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -50,23 +50,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aspose.3D, Version=20.11.0.0, Culture=neutral, PublicKeyToken=f071c641d0b4582b, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.3D.20.11.0\lib\net40\Aspose.3D.dll</HintPath>
-    </Reference>
-    <Reference Include="Aspose.BarCode, Version=20.10.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.BarCode.20.10.0\lib\net40\Aspose.BarCode.dll</HintPath>
-    </Reference>
-    <Reference Include="Aspose.Page, Version=20.10.0.0, Culture=neutral, PublicKeyToken=f0262d67fe233d63, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.Page.20.10.0\lib\net40\Aspose.Page.dll</HintPath>
-    </Reference>
-    <Reference Include="Aspose.PUB, Version=20.4.0.0, Culture=neutral, PublicKeyToken=f0262d67fe233d63, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.PUB.20.4.0\lib\net4.0\Aspose.PUB.dll</HintPath>
-    </Reference>
-    <Reference Include="Aspose.Tasks, Version=20.11.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.Tasks.20.11.0\lib\net40\Aspose.Tasks.dll</HintPath>
-    </Reference>
-    <Reference Include="Aspose.Words, Version=20.11.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.Words.20.11.0\lib\net40\Aspose.Words.dll</HintPath>
+    <Reference Include="Autofac.Integration.Web">
+      <HintPath>D:\Documents\Установочники\ELMA3-Plugin\Applications\BPM\EleWise.ELMA.BPM.Web\bin\Autofac.Integration.Web.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="EleWise.ELMA.BPM">
       <HintPath>D:\Documents\Установочники\ELMA3-Plugin\Applications\BPM\EleWise.ELMA.BPM.Web\bin\EleWise.ELMA.BPM.dll</HintPath>
@@ -110,6 +96,9 @@
     <Reference Include="EleWise.ELMA.Tasks">
       <HintPath>..\..\..\..\..\Установочники\ELMA3-Plugin\Applications\BPM\EleWise.ELMA.BPM.Web\bin\EleWise.ELMA.Tasks.dll</HintPath>
     </Reference>
+    <Reference Include="EleWise.ELMA.Workflow">
+      <HintPath>..\..\..\..\..\Установочники\ELMA3-Plugin\Applications\BPM\EleWise.ELMA.BPM.Web\bin\EleWise.ELMA.Workflow.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Mvc">
       <HintPath>D:\Documents\Установочники\ELMA3-Plugin\Applications\BPM\EleWise.ELMA.BPM.Web\bin\Microsoft.Web.Mvc.dll</HintPath>
       <Private>False</Private>
@@ -152,8 +141,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\ITaskActionExtension.cs" />
-    <Compile Include="Components\TaskActionProvider.cs" />
+    <Compile Include="Components\TaskSender.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RouteProvider.cs" />
@@ -174,8 +162,7 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-    <None Include="Properties\ExtrasTaskExt.Web.nuspec" />
+    <None Include="Properties\SendToProcess.Web.nuspec" />
     <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -183,6 +170,12 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ExtrasTaskExt.Web\ExtrasTaskExt.Web.csproj">
+      <Project>{9CD407C8-F3F7-495D-A84D-25857FE8D692}</Project>
+      <Name>ExtrasTaskExt.Web</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ImportGroup>
@@ -206,7 +199,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>60820</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:60820/</IISUrl>
+          <IISUrl>http://localhost:59222/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

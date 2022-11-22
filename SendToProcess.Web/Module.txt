@@ -1,0 +1,14 @@
+﻿Name: SendToProcess.Web
+AntiForgery: disabled
+DisplayName: MyWebModule
+Author: My Company
+Website: http://www.elma-bpm.ru
+Version: 3.0.0
+OrchardVersion: 1.0.20
+Description: My ELMA3 Web Module
+Features:
+    SendToProcess.Web:
+        Name: SendToProcess.Web
+        Description: My ELMA3 Web Module
+        Category: My ELMA Modules
+        Dependencies: EleWise.ELMA.BPM.Web.Content, EleWise.ELMA.BPM.Web.Common
